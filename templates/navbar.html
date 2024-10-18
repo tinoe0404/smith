@@ -1,14 +1,32 @@
-<nav class="uk-navbar-container uk-margin-large-left" style="background-color: #fff;" uk-navbar>
+<nav class="uk-navbar-container uk-margin-large-left" style="background-color: #fff;margin-top: 50px;" uk-navbar>
+
+    <div class="uk-navbar-left">
+        <form class="uk-search uk-search-default">
+            <span uk-search-icon></span>
+            <input id="SearchBar" class="uk-search-input" type="search" placeholder="Search..." aria-label="">
+        </form>
+        
+    </div>
     <div class="uk-navbar-center">
 
         <ul class="uk-navbar-nav">
-            <li class="uk-active"><a style="text-transform: none;" href="#">WatchHub</a></li>
-            <li class="uk-active"><a href="#"><span uk-icon="cart"></span></a></li>
+            <li class="uk-active"><a style="text-transform: none;font-size: 20pt;font-family: Merriweather, serif;font-weight: 600;" href="#">WatchHub</a></li>
+            <li class="uk-active"><a href="#"><span uk-icon="cart"></span><span id="cartCount" class="uk-badge">0</span></a></li>
         </ul>
 
     </div>
 </nav>
 
-
-
 <hr class="uk-divider-icon">
+
+<script>
+    document.getElementById('SearchBar').addEventListener('input', function() {
+        const query = this.value.toLowerCase();
+        const items = document.querySelectorAll('.uk-card');
+        
+        items.forEach(item => {
+            const text = item.textContent.toLowerCase();
+            item.style.display = text.includes(query) ? '' : 'none';
+        });
+    });
+</script>
