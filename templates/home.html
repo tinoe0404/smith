@@ -56,9 +56,9 @@
                 </div>
                 <div class="uk-card-body">
                     <h3 class="uk-card-title">Ovado</h3>
-                    <p$671.56</p
-                    <button onclick="pushNotify();" style="text-transform:capitalize;color:#000; border: 2px solid #000; background-color: transparent
-                    ;" class="uk-button uk-button-secondary">Add to cart</button>
+                    <p>$671.56</p>
+                    <button style="text-transform:capitalize;color:#000; border: 2px solid #000; background-color: transparent
+                    ;" class="uk-button add-to-cart uk-button-secondary">Add to cart</button>
 
                 </div>
             </div>
@@ -70,10 +70,10 @@
                 </div>
                 <div class="uk-card-body">
                     <h3 class="uk-card-title">Fendi</h3>
-                    <p$359.56</p
+                    <p>$359.56</p>
 
-                    <button onclick="pushNotify();" style="text-transform:capitalize;color:#000; border: 2px solid #000; background-color: transparent
-                    ;" class="uk-button uk-button-secondary">Add to cart</button>
+                    <button style="text-transform:capitalize;color:#000; border: 2px solid #000; background-color: transparent
+                    ;" class="uk-button add-to-cart uk-button-secondary">Add to cart</button>
 
                 </div>
             </div>
@@ -85,9 +85,9 @@
                 </div>
                 <div class="uk-card-body">
                     <h3 class="uk-card-title">Ferramango</h3>
-                    <p$487.45</p
-                    <button onclick="pushNotify();" style="text-transform:capitalize; color:#000; border: 2px solid #000;background-color: transparent
-                    ;" class="uk-button uk-button-secondary">Add to cart</button>
+                    <p>$487.45</p>
+                    <button style="text-transform:capitalize; color:#000; border: 2px solid #000;background-color: transparent
+                    ;" class="uk-button add-to-cart uk-button-secondary">Add to cart</button>
 
                 </div>
             </div>
@@ -99,9 +99,9 @@
                 </div>
                 <div class="uk-card-body">
                     <h3 class="uk-card-title">Tissot</h3>
-                    <p$674.97</p
-                    <button onclick="pushNotify();" style="text-transform:capitalize; color:#000; border: 2px solid #000;background-color: transparent
-                    ;" class="uk-button uk-button-secondary">Add to cart</button>
+                    <p>$674.97</p>
+                    <button style="text-transform:capitalize; color:#000; border: 2px solid #000;background-color: transparent
+                    ;" class="uk-button add-to-cart uk-button-secondary">Add to cart</button>
 
                 </div>
             </div>
@@ -118,9 +118,9 @@
                 </div>
                 <div class="uk-card-body">
                     <h3 class="uk-card-title">Porsamo bleu</h3>
-                    <p$234.65</p
-                    <button onclick="pushNotify();" style="text-transform:capitalize; color:#000; border: 2px solid #000;background-color: transparent
-                    ;" class="uk-button uk-button-secondary">Add to cart</button>
+                    <p>$234.65</p>
+                    <button style="text-transform:capitalize; color:#000; border: 2px solid #000;background-color: transparent
+                    ;" class="uk-button add-to-cart uk-button-secondary">Add to cart</button>
                 </div>
             </div>
         </div>
@@ -131,9 +131,8 @@
                 </div>
                 <div class="uk-card-body">
                     <h3 class="uk-card-title">Breitling</h3>
-                    <p$499.08</p
-                    <button onclick="pushNotify();" style="text-transform:capitalize; color:#000; border: 2px solid #000;background-color: transparent
-                    ;" class="uk-button uk-button-secondary">Add to cart</button>
+                    <p>$499.08</p>
+                    <button style="text-transform:capitalize; color:#000; border: 2px solid #000;background-color: transparent;" class="uk-button add-to-cart uk-button-secondary">Add to cart</button>
                 </div>
             </div>
         </div>
@@ -144,10 +143,9 @@
                 </div>
                 <div class="uk-card-body">
                     <h3 class="uk-card-title">Michele</h3>
-                    <p$2012.45</p
-                    <button onclick="pushNotify();" style="text-transform:capitalize; color:#000; border: 2px solid #000;background-color: transparent
-                    ;" class="uk-button uk-button-secondary">Add to cart</button>
-
+                    <p>$2012.45</p>
+                    <button style="text-transform:capitalize; color:#000; border: 2px solid #000;background-color: transparent
+                    ;" class="uk-button add-to-cart uk-button-secondary">Add to cart</button>
                 </div>
             </div>
         </div>
@@ -158,9 +156,9 @@
                 </div>
                 <div class="uk-card-body">
                     <h3 class="uk-card-title">Rolex</h3>
-                    <p$1243.97</p
-                    <button onclick="pushNotify();" style="text-transform:capitalize; color:#000; border: 2px solid #000;background-color: transparent
-                    ;" class="uk-button uk-button-secondary">Add to cart</button>
+                    <p>$1243.97</p>
+                    <button style="text-transform:capitalize; color:#000; border: 2px solid #000;background-color: transparent
+                    ;" class="uk-button add-to-cart uk-button-secondary">Add to cart</button>
 
                 </div>
             </div>
@@ -180,12 +178,33 @@
     <p style="font-weight: 600;">H230279Z</p>
     <p style="font-weight: 600;">Harare Institute Of Technology</p>
 </div>
-
 <script>
-    function pushNotify() {
-        const cartCount = document.getElementById('cartCount');
-        cartCount.textContent = parseInt(cartCount.textContent) + 1;
+    document.addEventListener('DOMContentLoaded', function () {
+        const buttons = document.querySelectorAll('.add-to-cart');
+        buttons.forEach(button => {
+            button.addEventListener('click', function () {
+                let cartCount = document.getElementById('cartCount');
+                cartCount.textContent = parseInt(cartCount.textContent) + 1;
+                localStorage.setItem('cartCount', cartCount.textContent);
+                let cartItems = JSON.parse(localStorage.getItem('cartItems')) || [];
+                const item = {
+                    name: this.parentElement.querySelector('h3').innerText,
+                    price: this.parentElement.querySelector('p').innerText,
+                    img: this.parentElement.parentElement.querySelector('img').src
+                };
+                cartItems.push(item);
+                localStorage.setItem('cartItems', JSON.stringify(cartItems));
+            });
+        });
 
+        let storedCartCount = localStorage.getItem('cartCount');
+        if (storedCartCount) {
+            document.getElementById('cartCount').textContent = storedCartCount;
+        }
+    });
+</script>
+<!-- <script>
+    function pushNotify() {
         new Notify({
             status: 'success',
             text: 'Item added to cart',
@@ -203,4 +222,4 @@
             position: 'x-center'
         })
     }
-</script>
+</script> -->
