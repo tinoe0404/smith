@@ -132,7 +132,9 @@
                 <div class="uk-card-body">
                     <h3 class="uk-card-title">Breitling</h3>
                     <p>$499.08</p>
-                    <button style="text-transform:capitalize; color:#000; border: 2px solid #000;background-color: transparent;" class="uk-button add-to-cart uk-button-secondary">Add to cart</button>
+                    <button
+                        style="text-transform:capitalize; color:#000; border: 2px solid #000;background-color: transparent;"
+                        class="uk-button add-to-cart uk-button-secondary">Add to cart</button>
                 </div>
             </div>
         </div>
@@ -172,38 +174,56 @@
     <p style="font-weight: 600;">&copy; &nbsp; 2024 WatchHub </p>
 
 </div>
+<div>
+    <div style="display: flex;">
+        <div class="uk-text-left uk-margin-large-left">
+            <p style="font-weight: 700;">ABOUT US</p>
+            <p style="font-weight: 600;">Your go-to source for expert <br>reviews, news, and insights<br> on fine
+                timepieces.</p>
+        </div>
+        <div class="uk-text-center" style="margin-left: 410px;">
+            <p style="font-weight: 600;">FOLLOW US</p>
+            <div style="display: flex;">
+                <P style="display: none;"><span uk-icon="facebook"></span></P>&nbsp;&nbsp;&nbsp;
+                <a href="https://www.facebook.com/profile.php?id=100073225172594&mibextid=ZbWKwL"><span uk-icon="facebook"></span></P>&nbsp;&nbsp;&nbsp;
+                <a href="https://x.com/Tinoe0404?t=NHeOdZeHwGG5Wq0m_dPYXg&s=09"><span uk-icon="x"></span></P> &nbsp;&nbsp;
+                <a href="http://www.linkedin.com/in/tinotenda-chandengenda-9a1086306"><span uk-icon="linkedin"></span></a>
+            </div>
+        </div>
 
-<div class="uk-text-left uk-margin-large-left">
-    <p style="font-weight: 600;">Tinotenda Chandengenda</p>
-    <p style="font-weight: 600;">H230279Z</p>
-    <p style="font-weight: 600;">Harare Institute Of Technology</p>
-</div>
-<script>
-    document.addEventListener('DOMContentLoaded', function () {
-        const buttons = document.querySelectorAll('.add-to-cart');
-        buttons.forEach(button => {
-            button.addEventListener('click', function () {
-                let cartCount = document.getElementById('cartCount');
-                cartCount.textContent = parseInt(cartCount.textContent) + 1;
-                localStorage.setItem('cartCount', cartCount.textContent);
-                let cartItems = JSON.parse(localStorage.getItem('cartItems')) || [];
-                const item = {
-                    name: this.parentElement.querySelector('h3').innerText,
-                    price: this.parentElement.querySelector('p').innerText,
-                    img: this.parentElement.parentElement.querySelector('img').src
-                };
-                cartItems.push(item);
-                localStorage.setItem('cartItems', JSON.stringify(cartItems));
+        <div class="uk-text-right" style="margin-left: 300px;">
+            <p style="font-weight: 600;">Tinotenda Chandengenda</p>
+            <p style="font-weight: 600;">H230279Z</p>
+            <p style="font-weight: 600;">Harare Institute Of Technology</p>
+        </div>
+
+    </div>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const buttons = document.querySelectorAll('.add-to-cart');
+            buttons.forEach(button => {
+                button.addEventListener('click', function () {
+                    let cartCount = document.getElementById('cartCount');
+                    cartCount.textContent = parseInt(cartCount.textContent) + 1;
+                    localStorage.setItem('cartCount', cartCount.textContent);
+                    let cartItems = JSON.parse(localStorage.getItem('cartItems')) || [];
+                    const item = {
+                        name: this.parentElement.querySelector('h3').innerText,
+                        price: this.parentElement.querySelector('p').innerText,
+                        img: this.parentElement.parentElement.querySelector('img').src
+                    };
+                    cartItems.push(item);
+                    localStorage.setItem('cartItems', JSON.stringify(cartItems));
+                });
             });
-        });
 
-        let storedCartCount = localStorage.getItem('cartCount');
-        if (storedCartCount) {
-            document.getElementById('cartCount').textContent = storedCartCount;
-        }
-    });
-</script>
-<!-- <script>
+            let storedCartCount = localStorage.getItem('cartCount');
+            if (storedCartCount) {
+                document.getElementById('cartCount').textContent = storedCartCount;
+            }
+        });
+    </script>
+    <!-- <script>
     function pushNotify() {
         new Notify({
             status: 'success',
